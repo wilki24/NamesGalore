@@ -1,39 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5111A045-D0C6-459A-87B9-6CA3B16B8B69}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NamesGalore</RootNamespace>
-    <AssemblyName>NamesGalore</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyTitle>NamesGalore</AssemblyTitle>
+    <Product>NamesGalore</Product>
+    <Copyright>Copyright ©  2017</Copyright>
+    <Deterministic>false</Deterministic>
+    <AssemblyVersion>1.3.4.*</AssemblyVersion>
+    <FileVersion>1.3.4</FileVersion>
     <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
     <OutputPath>..\..\Assemblies\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\..\Assemblies\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <PostBuildEvent>xcopy /s /Y "$(TargetDir)*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Assemblies\"
+xcopy /S /Y "$(SolutionDir)..\About\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\About\"
+xcopy /S /Y "$(SolutionDir)..\Languages\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PostBuildEvent>
+    <PreBuildEvent>rmdir /S /Q "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PreBuildEvent>
+    <PostBuildEvent>xcopy /s /Y "$(TargetDir)*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Assemblies\"
+xcopy /S /Y "$(SolutionDir)..\About\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\About\"
+xcopy /S /Y "$(SolutionDir)..\Languages\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PostBuildEvent>
+    <PreBuildEvent>rmdir /S /Q "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PreBuildEvent>
+    <PostBuildEvent>xcopy /s /Y "$(TargetDir)*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Assemblies\"
+xcopy /S /Y "$(SolutionDir)..\About\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\About\"
+xcopy /S /Y "$(SolutionDir)..\Languages\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PostBuildEvent>
+    <PreBuildEvent>rmdir /S /Q "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /s /Y "$(TargetDir)*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Assemblies\"
+xcopy /S /Y "$(SolutionDir)..\About\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\About\"
+xcopy /S /Y "$(SolutionDir)..\Languages\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>rmdir /S /Q "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -47,12 +46,7 @@
       <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
@@ -63,19 +57,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomNameBank.cs" />
-    <Compile Include="Patches.cs" />
-    <Compile Include="NameInjector.cs" />
-    <Compile Include="ModSettings.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Remove="NamesGalore\obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>xcopy /s /Y "$(TargetDir)*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Assemblies\"
-xcopy /S /Y "$(SolutionDir)..\About\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\About\"
-xcopy /S /Y "$(SolutionDir)..\Languages\*" "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>rmdir /S /Q "D:\SteamLibrary\steamapps\common\RimWorld\Mods\$(ProjectName)\Languages\"</PreBuildEvent>
-  </PropertyGroup>
 </Project>
